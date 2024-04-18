@@ -1,0 +1,29 @@
+#!/bin/bash
+
+# Check if the correct number and type of arguments is provided
+if [ "$#" -ne 2 ] || ([ "$1" != "node" ] && [ "$1" != "pod" ]); then
+  echo "Usage: $0 <node|pod> <NAMESPACE>"
+  exit 1
+fi
+
+# Define command-line arguments
+RESOURCE_TYPE=$1
+NAMESPACE=$2
+
+# Define formatting
+OUTPUT_FORMAT="%-9s %-12s %-50s %-5s %-5s\n"
+
+# Output header
+printf "$OUTPUT_FORMAT" "RESOURCE" "NAMESPACE" "NAME" "CPU" "MEMORY"
+
+# Retrieve resource usage statistics from Kubernetes
+kubectl top $RESOURCE_TYPE -n $NAMESPACE | tail -n +2 | while read line
+do
+  # Extract CPU and memory usage from the output
+  NAME=$(echo $line | awk '{print $1}')
+  CPU=$(echo $line | awk '{print $2}')
+  MEMORY=$(echo $line | awk '{print $3}')
+  
+  # Output the statistics to the console
+  printf "$OUTPUT_FORMAT" "$RESOURCE_TYPE" "$NAMESPACE" "$NAME" "$CPU" "$MEMORY"
+done
