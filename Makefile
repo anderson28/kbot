@@ -32,10 +32,10 @@ darwin:
 	$(MAKE) build TARGOS=darwin TARGARCH=amd64
 
 image:
-	docker build -t ${REGISTRY}/${APP}:${VERSION} .
+	docker build . -t ${REGISTRY}/${APP}:${VERSION}-${HASH}-${TARGARCH} --build-arg TARGETARCH=${TARGARCH}
 
 push:
-	docker push ${REGISTRY}/${APP}:${VERSION}
+	docker push ${REGISTRY}/${APP}:${VERSION}-${HASH}-${TARGARCH}
 
 lint:
 	golint
