@@ -9,7 +9,9 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Run test
         run: make test
@@ -35,13 +37,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    
-      - uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
       - run: echo "VERSION=$(git describe --tags --abbrev=0)-$(git rev-parse --short HEAD)" >> $GITHUB_ENV
 
-      - uses: mikefarah/yq@master
+      - uses: mikefarah/yq@v4.43.1
         with:
           cmd: yq -i '.image.tag=strenv(VERSION)' helm/values.yaml   
       
