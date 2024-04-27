@@ -36,7 +36,7 @@ jobs:
         run: make image
 
       - name: Push
-        run:
+        run: |
           make push
           make push-gh
 
