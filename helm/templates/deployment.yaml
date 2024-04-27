@@ -42,7 +42,12 @@ spec:
           volumeMounts:
           - mountPath: /dev/mem
             name: dev-mem
-          image: {{ .Values.image.repository }}/{{ .Chart.Name }}:{{ .Values.image.tag }}-{{ .Values.image.arch | default "amd64"}}
+          image: >-
+            {{- if .Values.image.primaryRegistryAvailable }}
+            {{ .Values.image.registry }}/{{ .Values.image.repository }}/{{ .Chart.Name }}:{{ .Values.image.tag }}-{{ .Values.image.os | default "linux"}}-{{ .Values.image.arch | default "amd64"}}
+            {{- else }}
+            {{ .Values.image.altRepository }}/{{ .Chart.Name }}:{{ .Values.image.tag }}-{{ .Values.image.os | default "linux"}}-{{ .Values.image.arch | default "amd64"}}
+            {{- end }}
           env:
             - name: {{ .Values.secret.env }}
               valueFrom:

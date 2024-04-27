@@ -4,8 +4,12 @@
 
 replicaCount: 1
 image:
-  repository: "andrulyan"
-  tag: "v1.0.0-abd1e32"
+  primaryRegistryAvailable: true
+  registry: "ghcr.io"
+  repository: "anderson28/kbot"
+  altRepository: "andrulyan"
+  tag: "v1.0.0-7f68833"
+  os: linux
   arch: amd64
 secret:
   name: "kbot"
