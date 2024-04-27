@@ -5,7 +5,7 @@
 replicaCount: 1
 image:
   repository: "andrulyan"
-  tag: "v1.0.0-ffef5a9"
+  tag: "v1.0.0-8868d83"
   arch: amd64
 secret:
   name: "kbot"
