@@ -8,7 +8,7 @@ image:
   registry: "ghcr.io"
   repository: "anderson28/kbot"
   altRepository: "andrulyan"
-  tag: "v1.0.0-7f68833"
+  tag: "v1.0.0-255b348"
   os: linux
   arch: amd64
 secret:
