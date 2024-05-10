@@ -8,7 +8,7 @@ image:
   registry: "ghcr.io"
   repository: "anderson28"
   altRepository: "andrulyan"
-  tag: "v1.0.0-302a70e"
+  tag: "v1.0.0-e2c6b0a"
   os: linux
   arch: amd64
 secret:
