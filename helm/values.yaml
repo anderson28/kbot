@@ -4,7 +4,7 @@
 
 replicaCount: 1
 image:
-  primaryRegistryAvailable: true
+  primaryRegistryAvailable: false
   registry: "ghcr.io"
   repository: "anderson28"
   altRepository: "andrulyan"
