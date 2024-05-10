@@ -6,7 +6,7 @@ replicaCount: 1
 image:
   primaryRegistryAvailable: true
   registry: "ghcr.io"
-  repository: "anderson28/kbot"
+  repository: "anderson28"
   altRepository: "andrulyan"
   tag: "v1.0.0-302a70e"
   os: linux
