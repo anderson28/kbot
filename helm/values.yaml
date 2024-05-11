@@ -11,9 +11,5 @@ image:
   tag: "v1.0.0-94bf9cb"
   os: linux
   arch: amd64
-secret:
-  name: "kbot"
-  key: "token"
-  env: "TELE_TOKEN"
 securityContext:
   privileged: true
